@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div class="col-md-8 column">
+        <div class="row">
+            <ol class="breadcrumb">
+                <li>您现在的位置：</li>
+                <li><a href="#">杭州远煊科技有限公司</a></li>
+                <li class="active">经营理念</li>
+            </ol>
+        </div>
+        <p> 企业宗旨：
+            用户至上，信誉取胜，质量优良，服务优质。
+
+            经营理念：
+            A.质量——形象的基础；科技——腾飞的关键；管理——永恒的主题；创新——发展的源泉。
+            B. 靠员工管理企业，靠科技提高素质，靠质量赢得市场，靠创新促进发展。
+
+            团队意识：
+            我靠企业生存，企业靠我发展；我为企业尽力，企业为我谋利。
+
+            职业道德：
+            A.用户是衣食父母，服务是基本职责。
+            B.用户至上，服务第一。
+
+            企业形象：
+            依法经营，管理科学，从业文明，作风过硬，服务优质，质量优良，技术精湛，勇于创新。
+
+            经营战略：
+            A.人才战略，品牌战略，创新战略，市场开发战略。
+            B.实施人才、品牌、创新和市场开发战略，巩固、提高水平，发展、壮大品牌。
+    </div>
+
+</body>
+<script>
+    function showPage(url) {
+        var xmlHttp;
+
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlHttp=new XMLHttpRequest();    //创建 XMLHttpRequest对象
+        }
+        else {
+            // code for IE6, IE5
+            xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        xmlHttp.onreadystatechange=function() {
+            //onreadystatechange — 当readystate变化时调用后面的方法
+
+            if (xmlHttp.readyState == 4) {
+                //xmlHttp.readyState == 4    ——    finished downloading response
+
+                if (xmlHttp.status == 200) {
+                    //xmlHttp.status == 200        ——    服务器反馈正常
+
+                    document.getElementById("content").innerHTML=xmlHttp.responseText;    //重设页面中id="content"的div里的内容
+                    executeScript(xmlHttp.responseText);    //执行从服务器返回的页面内容里包含的JavaScript函数
+                }
+                //错误状态处理
+                else if (xmlHttp.status == 404){
+                    alert("出错了☹   （错误代码：404 Not Found），……！");
+                    /* 对404的处理 */
+                    return;
+                }
+                else if (xmlHttp.status == 403) {
+                    alert("出错了☹   （错误代码：403 Forbidden），……");
+                    /* 对403的处理  */
+                    return;
+                }
+                else {
+                    alert("出错了☹   （错误代码：" + request.status + "），……");
+                    /* 对出现了其他错误代码所示错误的处理   */
+                    return;
+                }
+            }
+
+        }
+
+        //把请求发送到服务器上的指定文件（url指向的文件）进行处理
+        xmlHttp.open("GET", url, true);        //true表示异步处理
+        xmlHttp.send();
+    }
+</script>
+
+</html>

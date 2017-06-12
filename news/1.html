@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>最新动态</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/hrpage.css?version=1" />
+    <script type="text/javascript" src="../static/js/bootbox.js"></script>
+</head>
+<body>
+    <div class="col-md-8 column">
+        <table class="table table-bordered table-hover definewidth m10">
+            <thead>
+            <tr>
+                <th style="width: 18%;table-layout:fixed">新闻编号</th>
+                <th style="width: 18%;table-layout:fixed">新闻标题</th>
+                <th style="width: 18%;table-layout:fixed">新闻作者</th>
+                <th style="width: 18%;table-layout:fixed">创建时间</th>
+                <th style="width: 18%;table-layout:fixed">最近修改时间</th>
+            </tr>
+            </thead>
+            <tbody id="theBodyList"></tbody>
+        </table>
+        <div class="inline pull-right page" id="pageInfo">
+        </div>
+
+        <table class="table">
+            <!--<caption>上下文表格布局</caption>-->
+            <thead>
+            <tr>
+                <th>招聘职位</th>
+                <th>工作地点</th>
+                <th>招聘人数</th>
+                <th>详情</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="active">
+                <td>产品经理</td>
+                <td>杭州滨江</td>
+                <td>1</td>
+                <th>详情</th>
+            </tr>
+            <tr class="success">
+                <td>研发项目经理</td>
+                <td>上海</td>
+                <td>1</td>
+                <th>详情</th>
+            <tr class="warning">
+                <td>华东区销售经理</td>
+                <td>上海</td>
+                <td>1</td>
+                <th>详情</th>
+            <tr class="danger">
+                <td>产品4</td>
+                <td>20/10/2013</td>
+                <td>已退货</td>
+                <td>已退货</td></tr>
+            </tbody>
+        </table>
+        <ul class="pagination">
+            <li><a href="#">&laquo;</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">&raquo;</a></li>
+        </ul>
+
+    </div>
+
+</body>
+<script>
+    //所定义的行信息
+    var tmp =
+        [
+            '<td>{id}</td>',
+            '<td><a href="javascript:updatePicture({picId})" title="点击查看详情">{title}</td>',
+            '<td>{author}</td>',
+            '<td>{createTimeStr}</td>',
+            '<td>{updateTimeStr}</td>',
+        ].join('');
+    var pramas = new Object();//用于传递参数,必须定义
+    var urlInfo  = "../../web/getNewsList";//数据请求路径
+</script>
+<script type="text/javascript" src="../static/js/hrpage.js"></script>
+<script>
+    $(document).ready(function()
+    {
+        //findInfosByPage(1);
+    });
+
+    function getInfoByParams() {
+        var s_title = $("#s_title").val();
+        pramas.s_title = s_title;
+        var s_author = $("#s_author").val();
+        pramas.s_author = s_author;
+
+        findInfosByArgs(pramas);
+    }
+    /**
+     * 根据参数查找
+     * @param pramas
+     */
+    function findInfosByArgs(pramas) {
+        bootbox.dialog({ message: '<div class="text-center"><i class="fa fa-spin fa-spinner"></i> Loading...</div>' });
+        $.post(urlInfo,pramas,function call(data){
+            console.dir(data);
+            document.getElementById('theBodyList').innerHTML = '';
+            try{
+                renderAll(data);//加载列表
+            }catch(e){
+
+            }
+        },'json');
+    }
+</script>
+</html>

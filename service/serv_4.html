@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../static/jquery/2.1.1/jquery.js"></script>
+
+    <script src="../static/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="../static/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../static/bootstrap/validator/js/bootstrapValidator.min.js"></script>
+    <link href="../static/bootstrap/validator/css/bootstrapValidator.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="col-md-8 column">
+        <div class="row">
+            <ol class="breadcrumb">
+                <li>您现在的位置：</li>
+                <li><a href="#">杭州远煊科技有限公司</a></li>
+                <li class="active">给我留言</li>
+            </ol>
+        </div>
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label for="lytitle" class="col-sm-2 control-label">留言主题</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="lytitle" placeholder="请输入主题">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="lycontent" class="col-sm-2 control-label">留言内容</label>
+                <div class="col-sm-10">
+                    <textarea type="text" class="form-control" name="lycontent" placeholder="请输入内容"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="username" class="col-sm-2 control-label">客户名称</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="username" placeholder="请输入客户名称">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="contactPerson" class="col-sm-2 control-label">联系人</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="contactPerson" placeholder="请输入联系人">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="contactPhone" class="col-sm-2 control-label">联系电话</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="contactPhone" placeholder="请输入联系电话">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email" class="col-sm-2 control-label">邮箱</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="email" placeholder="请输入QQ或者MSN">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">提交</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+<script>
+    $(document).ready(function()
+    {
+        $('form').bootstrapValidator({
+            message: 'This value is not valid',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                lytitle: {
+                    message: '留言主题验证失败',
+                    validators: {
+                        notEmpty: {
+                            message: '留言主题不能为空'
+                        }
+                    }
+                },
+                lycontent: {
+                    validators: {
+                        notEmpty: {
+                            message: '留言内容不能为空'
+                        }
+                    }
+                },
+                username: {
+                    validators: {
+                        notEmpty: {
+                            message: '用户名不能为空'
+                        },
+                        stringLength: {
+                            min: 6,
+                            max: 18,
+                            message: '用户名长度必须在6到18位之间'
+                        },
+                        regexp: {
+                            regexp: /^[a-zA-Z0-9_]+$/,
+                            message: '用户名只能包含大写、小写、数字和下划线'
+                        }
+                    }
+                },
+                contactPhone: {
+                    validators: {
+                        notEmpty: {
+                            message: '联系电话不能为空'
+                        }
+                    }
+                },
+                email:{
+                    validators:{
+                        notEmpty:{
+                            message:'邮箱不能为空'
+                        },
+                        emailAddress: {
+                            message: '邮箱地址格式有误'
+                        }
+                    }
+                }
+
+            }
+
+        });
+    });
+</script>
+</html>

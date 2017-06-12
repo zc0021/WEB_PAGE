@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../static/jquery/2.1.1/jquery.js"></script>
+
+    <script src="../static/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="../static/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../static/bootstrap/validator/js/bootstrapValidator.min.js"></script>
+    <link href="../static/bootstrap/validator/css/bootstrapValidator.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="col-md-8 column">
+        <div class="row">
+            <ol class="breadcrumb">
+                <li>您现在的位置：</li>
+                <li><a href="#">杭州远煊科技有限公司</a></li>
+                <li class="active">加盟申请</li>
+            </ol>
+        </div>
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label for="firstname" class="col-sm-2 control-label">您的姓名</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="username" placeholder="请输入您的姓名">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="lastname" class="col-sm-2 control-label">身份证号码</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="IDCard" placeholder="请输入身份证号码">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="firstname" class="col-sm-2 control-label">联系电话</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="contactPhone" placeholder="请输入联系电话">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="firstname" class="col-sm-2 control-label">联系地址</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="contactAddr" placeholder="请输入联系地址">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="firstname" class="col-sm-2 control-label">电子邮件</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="email" placeholder="请输入电子邮件">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="firstname" class="col-sm-2 control-label">省份地区</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="province" placeholder="请输入省份地区">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="firstname" class="col-sm-2 control-label">曾经营品牌</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="history" placeholder="请输入曾经营品牌">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="firstname" class="col-sm-2 control-label">营业面积</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="size" placeholder="请输入营业面积">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="firstname" class="col-sm-2 control-label">月销售量</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="number" placeholder="请输入月销售量">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="firstname" class="col-sm-2 control-label">备注</label>
+                <div class="col-sm-10">
+                    <textarea type="text" class="form-control" name="remark" placeholder="请输入备注"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="firstname" class="col-sm-2 control-label">验证码</label>
+                <div class="col-sm-10">
+                    <input type="text" id ="Txtidcode" class ="txtVerification"><span id="idcode"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">提交</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+<script>
+    $(document).ready(function()
+    {
+        $('form').bootstrapValidator({
+            message: 'This value is not valid',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                username: {
+                    message: '用户名验证失败',
+                    validators: {
+                        notEmpty: {
+                            message: '用户名不能为空'
+                        },
+                        stringLength: {
+                            min: 6,
+                            max: 18,
+                            message: '用户名长度必须在6到18位之间'
+                        },
+                        regexp: {
+                            regexp: /^[a-zA-Z0-9_]+$/,
+                            message: '用户名只能包含大写、小写、数字和下划线'
+                        }
+                    }
+                },
+                IDCard: {
+                    validators: {
+                        notEmpty: {
+                            message: '留言主题不能为空'
+                        }
+                    }
+                },
+                contactPhone: {
+                    validators: {
+                        notEmpty: {
+                            message: '联系电话不能为空'
+                        }
+                    }
+                },
+
+                contactAddr: {
+                    validators: {
+                        notEmpty: {
+                            message: '联系地址不能为空'
+                        }
+                    }
+                },
+                email:{
+                    validators:{
+                        notEmpty:{
+                            message:'邮箱不能为空'
+                        },
+                        emailAddress: {
+                            message: '邮箱地址格式有误'
+                        }
+                    }
+                },
+                province: {
+                    validators: {
+                        notEmpty: {
+                            message: '省份地区不能为空'
+                        }
+                    }
+                },
+                history: {
+                    validators: {
+                        notEmpty: {
+                            message: '曾经营品牌不能为空'
+                        }
+                    }
+                },
+                size: {
+                    validators: {
+                        notEmpty: {
+                            message: '省份地区不能为空'
+                        }
+                    }
+                },
+                number: {
+                    validators: {
+                        notEmpty: {
+                            message: '曾经营品牌不能为空'
+                        }
+                    }
+                }
+
+            }
+
+        });
+    });
+</script>
+</html>

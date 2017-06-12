@@ -1,0 +1,44 @@
+.sel_btn{
+    height: 21px;
+    line-height: 21px;
+    padding: 0 11px;
+    background: #02bafa;
+    border: 1px #26bbdb solid;
+    border-radius: 3px;
+    color: #fff;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 12px;
+    outline: none;
+}
+
+A.sel_btn:link{text-decoration:none;}
+A.sel_btn:visited{text-decoration:none;}
+A.sel_btn:active{text-decoration:none;}
+
+.sel_btn:focus{
+    background: #e4e4e4;
+}
+
+
+.sel_btn_tab{
+    height: 21px;
+    line-height: 21px;
+    padding: 0 11px;
+    background: #CCFFCC;
+    border: 1px #26bbdb solid;
+    border-radius: 3px;
+    color:#000000;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 12px;
+    outline: none;
+}
+A.sel_btn_tab:link{text-decoration:none;}
+A.sel_btn_tab:visited{text-decoration:none;}
+A.sel_btn_tab:active{text-decoration:none;}
+
+
+.ch_cls{
+    background: #e4e4e4;
+}
